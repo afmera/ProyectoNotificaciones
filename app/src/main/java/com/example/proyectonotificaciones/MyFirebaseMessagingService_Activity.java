@@ -1,8 +1,5 @@
 package com.example.proyectonotificaciones;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -11,15 +8,18 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
-import android.nfc.Tag;
 import android.os.Build;
-import android.os.Bundle;
 import android.util.Log;
+
+import androidx.core.app.NotificationCompat;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 import java.util.Map;
+
+import static android.graphics.Color.rgb;
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class MyFirebaseMessagingService_Activity extends FirebaseMessagingService {
     @Override
@@ -63,7 +63,16 @@ public class MyFirebaseMessagingService_Activity extends FirebaseMessagingServic
         //BODY
         //EL TITULO
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID);
-        notificationBuilder.setSmallIcon(R.drawable.booking).setColor(rgb(255, 160, 0)).setContentTitle(title).setContentText(body).setAutoCancel(true).setVibrate(new long[]{500, 1000, 500, 1000}).setSound(defaultSoundUri).setContentIntent(pendingIntent).setContentInfo("info");
+        notificationBuilder
+                .setSmallIcon(R.drawable.booking_01)
+                .setColor(rgb(255, 160, 0))
+                .setContentTitle(title)
+                .setContentText(body)
+                .setAutoCancel(true)
+                .setVibrate(new long[]{500, 1000, 500, 1000})
+                .setSound(defaultSoundUri)
+                .setContentIntent(pendingIntent)
+                .setContentInfo("info");
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         //SE REALIZA UN VALIDACION DEL SDK DEL DISPOSITO
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -86,7 +95,7 @@ public class MyFirebaseMessagingService_Activity extends FirebaseMessagingServic
         String NOTIFICATION_CHANNEL_ID = getString(R.string.default_notification_channel_id);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID);
         notificationBuilder
-                .setSmallIcon(R.drawable.booking)
+                .setSmallIcon(R.drawable.booking_01)
                 .setColor(rgb(255, 160, 0))
                 .setContentTitle(title)
                 .setContentText(body)

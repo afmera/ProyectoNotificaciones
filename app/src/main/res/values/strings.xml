@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ProyectoNotificaciones</string>
+    <string name="action_settings">Settings</string>
+    <string name="default_notification_channel_id" translatable="false">defaul_channel</string>
 </resources>
